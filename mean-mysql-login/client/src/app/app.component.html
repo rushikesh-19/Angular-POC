@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="background-color: #4b0082 ;">
+  <a class="navbar-brand" routerLink="/" style="color: #fff;">NexTech</a>
+  <!-- <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10"> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/">Home</a>
+      </li>
+
+      <li *ngIf="!auth.isLoggedIn()" class="nav-item active">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+      <li *ngIf="!auth.isLoggedIn()" class="nav-item active">
+        <a class="nav-link" routerLink="/register">Register</a>
+      </li>
+      <li *ngIf="auth.isLoggedIn()" class="nav-item active">
+        <a class="nav-link" routerLink="/profile">{{ auth.getUserDetails()?.name }}</a>
+      </li>
+      <li *ngIf="auth.isLoggedIn()" class="nav-item active  ">
+        <a class="nav-link" routerLink="" (click)="auth.logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+  <!-- </div> -->
+</nav>
+<router-outlet></router-outlet>
